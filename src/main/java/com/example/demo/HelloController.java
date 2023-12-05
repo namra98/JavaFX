@@ -1,8 +1,13 @@
 package com.example.demo;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,6 +22,8 @@ public class HelloController {
 
     @FXML
     private TextField naam;
+
+    private Stage primaryStage;
 
     @FXML
     protected void onHelloButtonClick() {
@@ -44,5 +51,20 @@ public class HelloController {
     @FXML
     protected void onHelloButtonClickH3() {
         welcomeText.setText("Welcome " + naam.getText());
+    }
+
+    @FXML
+    void ongotoNextPage(ActionEvent event) {
+        try {
+            Parent nextScreen = FXMLLoader.load(getClass().getResource("hello-view-2.fxml"));
+            primaryStage.getScene().setRoot(nextScreen);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
     }
 }

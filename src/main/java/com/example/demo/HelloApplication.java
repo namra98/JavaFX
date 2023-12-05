@@ -15,6 +15,12 @@ public class HelloApplication extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
+
+        // Get the controller associated with the MainScreen.fxml
+        HelloController mainController = fxmlLoader.getController();
+        mainController.setPrimaryStage(stage);
+
+
     }
 
     public static void main(String[] args) {
